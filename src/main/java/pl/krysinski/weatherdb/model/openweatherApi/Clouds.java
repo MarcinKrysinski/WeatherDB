@@ -1,19 +1,13 @@
 
-package pl.krysinski.weather.model.openweatherApi;
+package pl.krysinski.weatherdb.model.openweatherApi;
 
+import com.fasterxml.jackson.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "all"
+        "all"
 })
 public class Clouds {
 
@@ -42,9 +36,5 @@ public class Clouds {
         this.additionalProperties.put(name, value);
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this).append("all", all).append("additionalProperties", additionalProperties).toString();
-    }
 
 }
