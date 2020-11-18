@@ -11,10 +11,10 @@ public class WeatherClient {
 
     @Value("${weatherClient.apiKey}")
     private String apiKey;
-    private String city = "Gdansk";
+    private final String city = "Gdansk";
+    private RestTemplate restTemplate = new RestTemplate();
 
-    public WeatherDto getWeatherFromApi(){
-        RestTemplate restTemplate = new RestTemplate();
+       public WeatherDto getWeatherFromApi(){
         Weather weather = restTemplate.getForObject(String.format("http://api.openweathermap.org/data/2.5/weather?q=%s&units=metric&appid=%s", city, apiKey), Weather.class);
         return new WeatherDto(weather.getName(), weather.getMain().getTemp(), weather.getWind().getSpeed(), weather.getMain().getPressure(), weather.getMain().getHumidity(), weather.getClouds().getAll());
     }
